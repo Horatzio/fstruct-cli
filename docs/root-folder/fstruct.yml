@@ -1,7 +1,0 @@
-root-folder:
-  - file1-link.txt->"file1.txt"
-  - file1.txt
-  - file2.json
-  - sub-folder-1:
-      - otherfile.yaml
-  - sub-folder-1-link->"sub-folder-1"
