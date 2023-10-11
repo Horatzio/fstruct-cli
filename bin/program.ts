@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-"use strict";
-
-// TypeScript (.ts)
 import { Command } from 'commander';
 import { DEFAULTS } from './config';
 import { commands } from './commands';
