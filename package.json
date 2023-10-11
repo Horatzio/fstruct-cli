@@ -1,0 +1,72 @@
+{
+  "name": "fstruct-cli",
+  "version": "0.0.1-alpha",
+  "description": "Command line tool",
+  "engines": {
+    "node": ">=18.16.0"
+  },
+  "bin": {
+    "fstruct": "./dist/bin/index.js"
+  },
+  "directories": {
+    "bin": "./dist/bin"
+  },
+  "files": [
+    "README.md",
+    "LICENSE.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prebuild": "npm run clean",
+    "watch": "tsc --watch",
+    "prewatch": "npm run clean",
+    "clean": "rimraf ./dist",
+    "prepublishOnly": "npm lint && npm prettier && npm test",
+    "prettier": "prettier --write '**/*.{js,json,css,md}'",
+    "lint": "eslint --fix ./bin ./lib",
+    "test": "jest",
+    "test:watch": "npm test --watch"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "keywords": [
+    "fstruct",
+    "commander",
+    "commanderjs",
+    "command-line-tool",
+    "cli",
+    "command-line",
+    "command line",
+    "cl",
+    "terminal",
+    "node",
+    "nodejs"
+  ],
+  "dependencies": {
+    "@types/micromatch": "^4.0.3",
+    "chalk": "^2.4.1",
+    "commander": "^11.0.0",
+    "fs-extra": "^11.1.1",
+    "micromatch": "^4.0.5",
+    "yaml": "^2.3.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.2",
+    "@types/node": "^18.16.0",
+    "eslint": "^4.19.1",
+    "husky": "^1.0.0-rc.7",
+    "lint-staged": "^7.1.2",
+    "prettier": "^1.12.1",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.2.2"
+  }
+}

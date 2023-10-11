@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "outDir": "dist/bin",
+        "sourceMap": true,
+        "rootDir": "bin",
+        "skipLibCheck": true,
+        "resolveJsonModule": true
+    }
+}
