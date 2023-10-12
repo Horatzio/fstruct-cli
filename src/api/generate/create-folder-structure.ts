@@ -3,6 +3,7 @@ import * as path from 'path';
 import { isLink, getLinkParts } from "./link-parsing";
 import * as fs from 'fs-extra';
 import * as micromatch from 'micromatch';
+import { trimQuotes } from "../util/string-trimmer";
 
 export async function createFolderStructure(rootDir: string, folderStructure: FolderStructure) {
     const symLinkQueue = [];
@@ -13,7 +14,7 @@ export async function createFolderStructure(rootDir: string, folderStructure: Fo
     }
 
     async function processFolderStructure(folderStructure: FolderStructure, currentDir: string) {
-        const currentFolder = Object.keys(folderStructure)[0];
+        const currentFolder = trimQuotes(Object.keys(folderStructure)[0]);
         if (isLink(currentFolder)) {
             await processLinkFolder(folderStructure, currentDir);
             return;
@@ -23,7 +24,8 @@ export async function createFolderStructure(rootDir: string, folderStructure: Fo
         await fs.ensureDir(parentFolderDir);
 
         const contents = folderStructure[currentFolder];
-        for(const entry of contents) {
+        for(const unsanitizedEntry of contents) {
+            const entry = trimQuotes(unsanitizedEntry);
             if (typeof entry === 'string') {
                 if (isLink(entry)) {
                     const linkParts = getLinkParts(entry);
@@ -43,7 +45,7 @@ export async function createFolderStructure(rootDir: string, folderStructure: Fo
     }
 
     async function processLinkFolder(linkFolderStructure: FolderStructure, currentDir: string) {
-        const folderName = Object.keys(linkFolderStructure)[0];
+        const folderName = trimQuotes(Object.keys(linkFolderStructure)[0]);
         const linkParts = getLinkParts(folderName);
 
         const contents = linkFolderStructure[folderName];
