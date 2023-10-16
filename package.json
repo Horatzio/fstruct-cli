@@ -61,11 +61,13 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.2",
+    "@types/mock-fs": "^4.13.2",
     "@types/node": "^18.16.0",
     "ava": "^5.3.1",
     "eslint": "^4.19.1",
     "husky": "^1.0.0-rc.7",
     "lint-staged": "^7.1.2",
+    "mock-fs": "^5.2.0",
     "prettier": "^1.12.1",
     "rimraf": "^5.0.5",
     "tsx": "^3.13.0",

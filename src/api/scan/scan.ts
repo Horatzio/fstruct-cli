@@ -1,7 +1,7 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import * as yaml from 'yaml';
-import { FolderStructure } from './model/folder-structure';
+import { FolderStructure } from '../model/folder-structure';
 
 export async function executeScan(targetFolder: string, fstructFile: string) {
     const folderStructure = await scanFolder(targetFolder);

@@ -12,8 +12,7 @@ program
     .description("A CLI tool for generating folder structures.")
     .addHelpText("beforeAll", "Display help for commands.")
     .version(version, "-v, --version")
-    .option("-c, --config <config>", `Specify a config file to use. Defaults to ${DEFAULTS.configFile}.`, undefined, DEFAULTS.configFile)
-
+    .option("-c, --config <config>", `Specify a config file to use. Defaults to ${DEFAULTS.configFile}.`, DEFAULTS.configFile)
 
 for (const command of commands) {
     program.addCommand(command);

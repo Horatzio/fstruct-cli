@@ -1,10 +1,10 @@
 import * as fs from 'fs-extra'
 import * as path from 'path';
-import { FstructException } from '../exception/fstruct-exception'
+import { FstructArgumentException } from '../exception/exceptions'
 
 export async function validateFolderExists(folder: string) {
     if (!(await fs.exists(folder))) {
-        throw new FstructException(`Folder ${folder} does not exist.`)
+        throw new FstructArgumentException(`Folder ${folder} does not exist.`)
     }
 }
 
@@ -13,17 +13,17 @@ const ymlExtensions = [
     '.yaml'
 ]
 
-export async function validateFstructFileExists(file: string) {
+export async function validateYmlFileExists(file: string) {
     await validateFileExists(file);
 
     const extension = path.extname(file);
     if (!ymlExtensions.includes(extension)) {
-        throw new FstructException(`Invalid file extension. Must be ${ymlExtensions.join(', ')}`)
+        throw new FstructArgumentException(`Invalid file extension. Must be [${ymlExtensions.join(', ')}]`)
     }
 }
 
 export async function validateFileExists(file: string) {
     if (!(await fs.exists(file))) {
-        throw new FstructException(`File ${file} does not exist.`)
+        throw new FstructArgumentException(`File ${file} does not exist.`)
     }
 }
