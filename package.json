@@ -6,24 +6,24 @@
     "node": ">=18.16.0"
   },
   "bin": {
-    "fstruct": "./dist/bin/index.js"
+    "fstruct": "./dist/index.js"
   },
   "directories": {
-    "bin": "./dist/bin"
+    "bin": "./dist"
   },
   "files": [
     "README.md",
     "LICENSE.md"
   ],
   "scripts": {
-    "build": "tsc",
     "prebuild": "npm run clean",
+    "build": "tsc --build",
     "watch": "tsc --watch",
     "prewatch": "npm run clean",
     "clean": "rimraf ./dist",
     "prepublishOnly": "npm lint && npm prettier && npm test",
     "prettier": "prettier --write '**/*.{js,json,css,md}'",
-    "lint": "eslint --fix ./bin ./lib",
+    "lint": "eslint --fix ./src",
     "test": "ava",
     "test:watch": "npm test --watch"
   },
@@ -52,8 +52,6 @@
     "nodejs"
   ],
   "dependencies": {
-    "@types/micromatch": "^4.0.3",
-    "chalk": "^2.4.1",
     "commander": "^11.0.0",
     "fs-extra": "^11.1.1",
     "micromatch": "^4.0.5",
@@ -61,6 +59,7 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.2",
+    "@types/micromatch": "^4.0.3",
     "@types/mock-fs": "^4.13.2",
     "@types/node": "^18.16.0",
     "ava": "^5.3.1",
@@ -70,6 +69,7 @@
     "mock-fs": "^5.2.0",
     "prettier": "^1.12.1",
     "rimraf": "^5.0.5",
+    "ts-loader": "^9.5.0",
     "tsx": "^3.13.0",
     "typescript": "^5.2.2"
   },

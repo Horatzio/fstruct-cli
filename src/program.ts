@@ -1,24 +1,21 @@
-#!/usr/bin/env node
-
 import { Command } from 'commander';
 import { DEFAULTS } from './config';
 import { commands } from './commands';
+import { version } from '../package.json';
+
 export const program = new Command();
-
-const { version } = require("../../package.json");
-
-program
-    .name("fstruct")
-    .description("A CLI tool for generating folder structures.")
-    .addHelpText("beforeAll", "Display help for commands.")
-    .version(version, "-v, --version")
-    .option("-c, --config <config>", `Specify a config file to use. Defaults to ${DEFAULTS.configFile}.`, DEFAULTS.configFile)
-
-for (const command of commands) {
-    program.addCommand(command);
-}
-
 async function main() {
+    program
+        .name("fstruct")
+        .description("A CLI tool for generating folder structures.")
+        .addHelpText("beforeAll", "Display help for commands.")
+        .version(version, "-v, --version")
+        .option("-c, --config <config>", `Specify a config file to use`, DEFAULTS.configFile)
+
+    for (const command of commands) {
+        program.addCommand(command);
+    }
+
     await program.parseAsync(process.argv);
 }
 
