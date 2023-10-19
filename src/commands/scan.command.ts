@@ -2,7 +2,7 @@ import { executeScan } from '../api/scan/scan';
 import { DEFAULTS } from '../config';
 import { Command } from 'commander';
 import { validateFolderExists } from './option-validator';
-import { initConfig } from '../api/config/config';
+import { initConfig } from "src/api/config/config";
 
 export const scanCommand = new Command("scan")
     .description("Scan a folder and generate a folder structure from it.")

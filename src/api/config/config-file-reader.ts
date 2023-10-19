@@ -1,4 +1,4 @@
-import { FStructConfig, fstructVariableRegex } from "./config";
+import { FStructConfig, fstructVariableRegex } from "./fstruct-config";
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as yaml from 'yaml';

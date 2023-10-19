@@ -2,7 +2,7 @@ import { DEFAULTS } from '../config';
 import { Command } from 'commander';
 import { executeGenerate } from '../api/generate/generate';
 import { validateYmlFileExists } from './option-validator';
-import { initConfig } from '../api/config/config';
+import { initConfig } from "src/api/config/config";
 
 export const generateCommand = new Command("generate")
     .description("Generate the folder structure.")

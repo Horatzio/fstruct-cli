@@ -1,4 +1,4 @@
-import { fstructVariableRegex } from "../config/config";
+import { fstructVariableRegex } from "../config/fstruct-config";
 
 const unixPathRegex = /^\/([a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+$/;
 const windowsPathRegex = /^[a-zA-Z]:\\(((?![<>:"/\\|?*]).)+\\)*((?![<>:"/\\|?*]).)+$/;
